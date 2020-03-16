@@ -24,6 +24,7 @@ class CreateUserPositionTable extends Migration
             $table->engine = 'InnoDB';
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('position_id');
+            $table->timestamps();
 
             $table->index(["users_id"], 'fk_user_position_users1_idx');
 

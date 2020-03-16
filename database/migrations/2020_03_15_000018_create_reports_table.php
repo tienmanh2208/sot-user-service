@@ -36,6 +36,7 @@ Có thể là comment, bài post, ...');
             $table->unsignedInteger('user_report');
             $table->unsignedInteger('user_resolve');
             $table->unsignedInteger('report_info_id');
+            $table->timestamps();
 
             $table->index(["user_resolve"], 'fk_reports_users2_idx');
 

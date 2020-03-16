@@ -24,6 +24,7 @@ class CreatePositionRoleTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('position_id');
             $table->unsignedInteger('roles_id');
+            $table->timestamps();
 
             $table->index(["roles_id"], 'fk_position_role_roles1_idx');
 

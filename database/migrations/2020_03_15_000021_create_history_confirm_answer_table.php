@@ -28,6 +28,7 @@ class CreateHistoryConfirmAnswerTable extends Migration
             $table->integer('current_status');
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('answers_users_id');
+            $table->timestamps();
 
             $table->index(["answers_users_id"], 'fk_history_confirm_answer_users2_idx');
 

@@ -30,6 +30,7 @@ class CreateGroupInfosTable extends Migration
 2 - protected
 3 - private');
             $table->string('key', 45)->nullable()->comment('Contain key to access group');
+            $table->timestamps();
 
             $table->index(["creator"], 'fk_group_infos_users1_idx');
 

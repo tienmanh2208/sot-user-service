@@ -30,6 +30,7 @@ class CreateUserGroupsTable extends Migration
 2 - can post question, can not reply
 3 - can reply, can not create question
 4 - can do anything');
+            $table->timestamps();
 
             $table->index(["users_id"], 'fk_user_groups_users1_idx');
 

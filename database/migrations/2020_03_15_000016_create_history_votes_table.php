@@ -28,6 +28,7 @@ class CreateHistoryVotesTable extends Migration
             $table->integer('post_id');
             $table->tinyInteger('type')->comment('1- comment
 2 - question');
+            $table->timestamps();
 
             $table->index(["users_id"], 'fk_votes_users1_idx');
 
