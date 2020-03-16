@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
-class CreateLogErrorsTable extends Migration
+class CreateLogErrorsCollection extends Migration
 {
     /**
      * Schema table name to migrate
@@ -20,12 +20,10 @@ class CreateLogErrorsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('_id');
-            $table->string('type', 45)->nullable();
-            $table->string('function', 45)->nullable();
-            $table->string('error_description', 45)->nullable();
+        Schema::connection('mongodb')->create($this->tableName, function ($collection) {
+            $collection->string('type', 45)->nullable();
+            $collection->string('function', 45)->nullable();
+            $collection->string('error_description', 45)->nullable();
         });
     }
 
@@ -34,8 +32,8 @@ class CreateLogErrorsTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        DB::connection('mongodb')->drop([$this->tableName]);
+    }
 }

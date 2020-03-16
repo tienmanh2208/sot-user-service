@@ -23,11 +23,11 @@ class CreateHistoryConfirmAnswerTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('answers_questions_id');
+            $table->string('answers_questions_id');
             $table->integer('previous_status');
             $table->integer('current_status');
-            $table->integer('users_id');
-            $table->integer('answers_users_id');
+            $table->unsignedInteger('users_id');
+            $table->unsignedInteger('answers_users_id');
 
             $table->index(["answers_users_id"], 'fk_history_confirm_answer_users2_idx');
 

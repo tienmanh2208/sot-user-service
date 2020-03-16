@@ -23,9 +23,9 @@ class CreateHistoryAssignTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('report_id');
-            $table->integer('user_id');
-            $table->integer('assign_to');
+            $table->unsignedInteger('report_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('assign_to');
             $table->text('reason')->nullable();
 
             $table->index(["user_id"], 'fk_history_assign_users1_idx');

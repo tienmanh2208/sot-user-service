@@ -23,7 +23,7 @@ class CreateGroupInfosTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('creator');
+            $table->unsignedInteger('creator');
             $table->text('title');
             $table->integer('default_coin');
             $table->tinyInteger('privacy')->default('1')->comment('1 - public

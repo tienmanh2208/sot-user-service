@@ -23,7 +23,7 @@ class CreateUserGroupsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('group_infos_id');
-            $table->integer('users_id');
+            $table->unsignedInteger('users_id');
             $table->tinyInteger('role')->comment('1 - member
 2 - content management');
             $table->tinyInteger('permission')->comment('1 - only view

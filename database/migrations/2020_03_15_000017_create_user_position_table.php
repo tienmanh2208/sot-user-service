@@ -22,13 +22,10 @@ class CreateUserPositionTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('users_id');
-            $table->integer('position_id');
-
-            $table->index(["position_id"], 'fk_user_position_position1_idx');
+            $table->unsignedInteger('users_id');
+            $table->unsignedInteger('position_id');
 
             $table->index(["users_id"], 'fk_user_position_users1_idx');
-
 
             $table->foreign('users_id', 'fk_user_position_users1_idx')
                 ->references('id')->on('users')

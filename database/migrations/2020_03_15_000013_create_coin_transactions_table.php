@@ -23,20 +23,18 @@ class CreateCoinTransactionsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('users_id');
+            $table->unsignedInteger('users_id');
             $table->integer('amount');
             $table->tinyInteger('action')->comment('1 - spending to ask question
 2 - charge
 3 - reclaim coin from quetion
 4 - earn coin from answer question');
 
-            $table->index(["users_id"], 'fk_coin_transactions_users1_idx');
+            $table->index(["users_id"], 'coin_transactions_index_users_id');
 
 
-            $table->foreign('users_id', 'fk_coin_transactions_users1_idx')
-                ->references('id')->on('users')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->foreign('users_id', 'fk_coin_transactions_users1_idx_foreign')
+                ->references('id')->on('users');
         });
     }
 

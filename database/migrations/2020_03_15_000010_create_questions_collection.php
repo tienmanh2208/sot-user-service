@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsTable extends Migration
+class CreateQuestionsCollection extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
     public $tableName = 'questions';
+    public $connection = 'mongodb';
 
     /**
      * Run the migrations.
@@ -20,13 +21,9 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->tinyInteger('visibility')->comment('1 - anyone can see
-2 - no one can see');
-            $table->tinyInteger('status')->comment('2 - resolved
-1 - open');
+        Schema::connection($this->connection)->create($this->tableName, function (Blueprint $table) {
+            $table->tinyInteger('visibility');
+            $table->tinyInteger('status');
             $table->integer('upvotes');
             $table->integer('downvotes');
             $table->json('content');
@@ -46,6 +43,6 @@ class CreateQuestionsTable extends Migration
      */
      public function down()
      {
-       Schema::dropIfExists($this->tableName);
+       Schema::connection($this->connection)->drop($this->tableName);
      }
 }

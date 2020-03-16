@@ -23,7 +23,7 @@ class CreatePositionRoleTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('position_id');
-            $table->integer('roles_id');
+            $table->unsignedInteger('roles_id');
 
             $table->index(["roles_id"], 'fk_position_role_roles1_idx');
 
