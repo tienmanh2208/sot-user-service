@@ -33,9 +33,9 @@ Có thể là comment, bài post, ...');
 1 - in progress
 2 - done
 3 - cancel');
-            $table->integer('user_report');
-            $table->integer('user_resolve');
-            $table->integer('report_info_id');
+            $table->unsignedInteger('user_report');
+            $table->unsignedInteger('user_resolve');
+            $table->unsignedInteger('report_info_id');
 
             $table->index(["user_resolve"], 'fk_reports_users2_idx');
 

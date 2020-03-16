@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration
+class CreateTagsCollection extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'tags';
+    public $collectionName = 'tags';
+    public $connection = 'mongodb';
 
     /**
      * Run the migrations.
@@ -20,9 +21,7 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
+        Schema::connection($this->connection)->create($this->collectionName, function (Blueprint $table) {
             $table->integer('questions_id');
             $table->string('content', 45)->nullable();
         });
@@ -35,6 +34,6 @@ class CreateTagsTable extends Migration
      */
      public function down()
      {
-       Schema::dropIfExists($this->tableName);
+       Schema::connection($this->connection)->drop($this->collectionName);
      }
 }

@@ -23,7 +23,7 @@ class CreateGroupSectionsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('group_infos_id');
+            $table->unsignedInteger('group_infos_id');
             $table->text('name');
             $table->text('Description');
 

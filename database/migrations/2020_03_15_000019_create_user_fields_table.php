@@ -23,8 +23,8 @@ class CreateUserFieldsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('users_id');
-            $table->integer('fields_id');
+            $table->unsignedInteger('users_id');
+            $table->unsignedInteger('fields_id');
 
             $table->index(["users_id"], 'fk_user_fields_users1_idx');
 
