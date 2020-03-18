@@ -16,4 +16,6 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'username_existed' => 'User name is already existed',
+    'user_created_successfully' => 'Create successfully',
 ];
