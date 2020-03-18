@@ -44,4 +44,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Check if an username exists or not
+     *
+     * @param string $userName
+     * @return bool
+     */
+    public static function checkUserName(string $userName)
+    {
+        $info = self::where('username', $userName)->first();
+
+        if (is_null($info)) {
+            return false;
+        }
+
+        return true;
+    }
 }
