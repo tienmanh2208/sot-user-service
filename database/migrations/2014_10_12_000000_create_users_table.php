@@ -39,6 +39,7 @@ class CreateUsersTable extends Migration
             $table->unique(["password"], 'password_UNIQUE');
 
             $table->unique(["username"], 'username_UNIQUE');
+            $table->timestamps();
         });
     }
 

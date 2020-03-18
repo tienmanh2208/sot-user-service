@@ -27,6 +27,7 @@ class CreateHistoryAssignTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('assign_to');
             $table->text('reason')->nullable();
+            $table->timestamps();
 
             $table->index(["user_id"], 'fk_history_assign_users1_idx');
 

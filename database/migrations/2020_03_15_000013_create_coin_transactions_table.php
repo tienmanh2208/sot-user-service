@@ -29,6 +29,7 @@ class CreateCoinTransactionsTable extends Migration
 2 - charge
 3 - reclaim coin from quetion
 4 - earn coin from answer question');
+            $table->timestamps();
 
             $table->index(["users_id"], 'coin_transactions_index_users_id');
 

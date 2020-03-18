@@ -26,6 +26,7 @@ class CreateGroupSectionsTable extends Migration
             $table->unsignedInteger('group_infos_id');
             $table->text('name');
             $table->text('Description');
+            $table->timestamps();
 
             $table->index(["group_infos_id"], 'fk_group_sections_group_infos1_idx');
 

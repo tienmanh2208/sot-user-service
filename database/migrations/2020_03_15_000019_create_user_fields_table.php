@@ -25,6 +25,7 @@ class CreateUserFieldsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('fields_id');
+            $table->timestamps();
 
             $table->index(["users_id"], 'fk_user_fields_users1_idx');
 

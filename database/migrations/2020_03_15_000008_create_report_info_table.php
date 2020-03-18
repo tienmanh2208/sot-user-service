@@ -24,6 +24,7 @@ class CreateReportInfoTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('actions');
+            $table->timestamps();
         });
     }
 

@@ -25,6 +25,7 @@ class CreateLoginHistoriesTable extends Migration
             $table->increments('_id');
             $table->string('ip', 45)->nullable();
             $table->string('user_id', 45)->nullable();
+            $table->timestamps();
         });
     }
 
