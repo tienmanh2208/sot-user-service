@@ -57,10 +57,12 @@ class RegisterController extends Controller
                 ];
             }
 
-            if (User::checkUserName($params['username'])) {
+            $checkExistence = User::checkExistenceOfUser($params['mail'], $params['username']);
+
+            if (!$checkExistence['status']) {
                 return [
                     'code' => 400,
-                    'message' => trans('auth.username_existed')
+                    'message' => $checkExistence['message'],
                 ];
             }
 
@@ -124,7 +126,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {

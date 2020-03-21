@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -46,6 +48,32 @@ class User extends Authenticatable
     ];
 
     /**
+     * @param string $email
+     * @param string $userName
+     * @return array
+     */
+    public static function checkExistenceOfUser(string $email, string $userName)
+    {
+        if (self::checkEmail($email)) {
+            return [
+                'status' => false,
+                'message' => trans('auth.email_exists')
+            ];
+        }
+
+        if (self::checkUserName($userName)) {
+            return [
+                'status' => false,
+                'message' => trans('auth.username_exists')
+            ];
+        }
+
+        return [
+            'status' => true,
+        ];
+    }
+
+    /**
      * Check if an username exists or not
      *
      * @param string $userName
@@ -54,6 +82,17 @@ class User extends Authenticatable
     public static function checkUserName(string $userName)
     {
         $info = self::where('username', $userName)->first();
+
+        if (is_null($info)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static function checkEmail(string $email)
+    {
+        $info = self::where('mail', $email)->first();
 
         if (is_null($info)) {
             return false;
