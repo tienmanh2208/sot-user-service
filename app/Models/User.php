@@ -47,6 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $numberOfTopUsers = 10;
+
     /**
      * @param string $email
      * @param string $userName
@@ -90,6 +92,10 @@ class User extends Authenticatable
         return true;
     }
 
+    /**
+     * @param string $email
+     * @return bool
+     */
     public static function checkEmail(string $email)
     {
         $info = self::where('mail', $email)->first();
@@ -99,5 +105,14 @@ class User extends Authenticatable
         }
 
         return true;
+    }
+
+    public function getTopUsers()
+    {
+        return $this->join('additional_infos', 'users.id', '=', 'additional_infos.user_id')
+            ->orderBy('total_answers', 'desc')
+            ->limit($this->numberOfTopUsers)
+            ->get(['first_name', 'last_name', 'id'])
+            ->toArray();
     }
 }
