@@ -23,3 +23,20 @@ Route::group([
     Route::post('/register', 'RegisterController@main');
     Route::post('/login', 'LoginController@main');
 });
+
+Route::group([
+    'middleware' => 'auth:api'
+], function () {
+    Route::group([
+        'prefix' => 'groups',
+        'namespace' => 'Groups'
+    ], function () {
+        Route::post('/create-group', 'CreateGroupController@main');
+    });
+});
+
+Route::group([
+    'namespace' => 'Globals',
+], function () {
+    Route::get('/top-users', 'GetTopUsersController@main');
+});
