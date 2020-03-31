@@ -20,7 +20,7 @@ class UserGroup extends Model
 
     /**
      * Join group vy invited key
-     * 
+     *
      * @param string $invitedKey
      * @param Group $groupId
      */
@@ -32,5 +32,18 @@ class UserGroup extends Model
             'role' => UserGroupRole::MEMBER,
             'permission' => UserGroupPermission::CAN_DO_ANYTHING,
         ]);
+    }
+
+    /**
+     * Remove member from group
+     * 
+     * @param integer $memberId
+     * @param integer $groupId
+     */
+    public function removeMember(int $memberId, int $groupId)
+    {
+        $this->where('group_infos_id', $groupId)
+            ->where('users_id', $memberId)
+            ->delete();
     }
 }
