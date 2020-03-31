@@ -29,9 +29,20 @@ class Group extends Model
         $this->create([
             'creator' => Auth::id(),
             'title' => $params['title'],
-            'default_coin' => (int)$params['default_coin'],
-            'privacy' => (int)$params['privacy'],
+            'default_coin' => (int) $params['default_coin'],
+            'privacy' => (int) $params['privacy'],
             'key' => Auth::id() . round(microtime(true), 0)
         ]);
+    }
+
+    /**
+     * Get group by invited key
+     * 
+     * @param string $invitedKey
+     */
+    public function getGroupByInvitedKey(string $invitedKey)
+    {
+        return $this->where('key', $invitedKey)
+            ->first();
     }
 }

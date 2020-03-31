@@ -32,6 +32,7 @@ Route::group([
         'namespace' => 'Groups'
     ], function () {
         Route::post('/create-group', 'CreateGroupController@main');
+        Route::get('/by-invited-key', 'GetGroupByInvitedKeyController@main');
     });
 });
 
