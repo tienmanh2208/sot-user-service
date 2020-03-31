@@ -57,7 +57,7 @@ class RegisterController extends Controller
                 ];
             }
 
-            $checkExistence = User::checkExistenceOfUser($params['mail'], $params['username']);
+            $checkExistence = User::checkExistenceOfUser($params['email'], $params['username']);
 
             if (!$checkExistence['status']) {
                 return [
@@ -99,7 +99,7 @@ class RegisterController extends Controller
             'first_name',
             'date_of_birth',
             'last_name',
-            'mail',
+            'email',
             'password_confirmation'
         ]);
     }
@@ -117,7 +117,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'string', 'max:255'],
-            'mail' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -135,7 +135,7 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'date_of_birth' => $data['date_of_birth'],
             'last_name' => $data['last_name'],
-            'mail' => $data['mail'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
