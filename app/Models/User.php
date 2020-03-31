@@ -23,7 +23,7 @@ class User extends Authenticatable
         'first_name',
         'date_of_birth',
         'last_name',
-        'mail',
+        'email',
         'role',
         'account_status',
         'coin_remain'
@@ -98,7 +98,7 @@ class User extends Authenticatable
      */
     public static function checkEmail(string $email)
     {
-        $info = self::where('mail', $email)->first();
+        $info = self::where('email', $email)->first();
 
         if (is_null($info)) {
             return false;

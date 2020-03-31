@@ -37,12 +37,33 @@ class Group extends Model
 
     /**
      * Get group by invited key
-     * 
+     *
      * @param string $invitedKey
      */
     public function getGroupByInvitedKey(string $invitedKey)
     {
         return $this->where('key', $invitedKey)
             ->first();
+    }
+
+    /**
+     * Check if an user is the creator of that group or not
+     * 
+     * @param integer $userId
+     * @param integer $groupId
+     * 
+     * @return boolean
+     */
+    public function isCreator(int $userId, int $groupId)
+    {
+        $info = $this->where('creator', $userId)
+            ->where('id', $groupId)
+            ->first();
+
+        if (is_null($info)) {
+            return false;
+        }
+
+        return true;
     }
 }

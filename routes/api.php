@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,13 @@ Route::group([
     ], function () {
         Route::post('/create-group', 'CreateGroupController@main');
         Route::get('/by-invited-key', 'GetGroupByInvitedKeyController@main');
+        Route::post('/join-group', 'JoinGroupByInvitedKeyController@main');
+
+        Route::group([
+            'middleware' => 'checkGroupCreator'
+        ], function () {
+            Route::post('/delete-member', 'DeleteMemberInGroupController@main');
+        });
     });
 });
 
