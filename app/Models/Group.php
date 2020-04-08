@@ -48,10 +48,10 @@ class Group extends Model
 
     /**
      * Check if an user is the creator of that group or not
-     * 
+     *
      * @param integer $userId
      * @param integer $groupId
-     * 
+     *
      * @return boolean
      */
     public function isCreator(int $userId, int $groupId)
@@ -65,5 +65,28 @@ class Group extends Model
         }
 
         return true;
+    }
+
+    /**
+     * Refresh key for group
+     *
+     * @param integer $groupId
+     */
+    public function refreshKey(int $groupId)
+    {
+        $newKey = Auth::id() . round(microtime(true), 0);
+
+        $this->where('id', $groupId)
+            ->update(['key' => $newKey ]);
+
+        return $newKey;
+    }
+
+    /**
+     * Get group info for admin
+     */
+    public function getGroupInfoForAdmin(int $groupId)
+    {
+        return $this->find($groupId)->toArray();
     }
 }

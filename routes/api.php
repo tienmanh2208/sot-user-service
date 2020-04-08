@@ -40,6 +40,8 @@ Route::group([
             'middleware' => 'checkGroupCreator'
         ], function () {
             Route::post('/delete-member', 'DeleteMemberInGroupController@main');
+            Route::post('/refresh-key', 'RefreshKeyController@main');
+            Route::get('/info', 'GetInfoGroupByAdminController@main');
         });
     });
 });

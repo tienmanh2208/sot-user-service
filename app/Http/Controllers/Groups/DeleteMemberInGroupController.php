@@ -31,7 +31,12 @@ class DeleteMemberInGroupController extends Controller
                 ];
             }
 
-            $this->removeMember($params['member_id'], $params['group_id']);
+            if (!$this->removeMember($params['member_id'], $params['group_id'])) {
+                return response()->json([
+                    'code' => 400,
+                    'message' => trans('server_response.can_not_delete_yourself'),
+                ], 200);
+            };
 
             return response()->json([
                 'code' => 204,
@@ -75,6 +80,12 @@ class DeleteMemberInGroupController extends Controller
      */
     public function removeMember(int $memberId, int $groupId)
     {
+        if ($memberId == $groupId) {
+            return false;
+        }
+
         $this->userGroup->removeMember($memberId, $groupId);
+
+        return true;
     }
 }

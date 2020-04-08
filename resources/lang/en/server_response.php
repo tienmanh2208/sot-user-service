@@ -11,4 +11,5 @@ return [
     'join_group_successfully' => 'Join group successfully',
     'request_forbidden' => 'Request is forbidden',
     'delete_member_successfully' => 'Delete member successfully',
+    'can_not_delete_yourself' => 'You can not delete yourself',
 ];
