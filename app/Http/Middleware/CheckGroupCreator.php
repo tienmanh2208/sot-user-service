@@ -19,7 +19,7 @@ class CheckGroupCreator
     {
         $group = new Group();
 
-        if (!$group->isCreator(Auth::id(), $request->group_id) || (int)$request->member_id === Auth::id()) {
+        if (!$group->isCreator(Auth::id(), $request->group_id)) {
             return response()->json([
                 'code' => 403,
                 'message' => trans('server_response.request_forbidden'),
