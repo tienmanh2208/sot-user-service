@@ -81,4 +81,12 @@ class Group extends Model
 
         return $newKey;
     }
+
+    /**
+     * Get group info for admin
+     */
+    public function getGroupInfoForAdmin(int $groupId)
+    {
+        return $this->find($groupId)->toArray();
+    }
 }
