@@ -79,4 +79,25 @@ class UserGroup extends Model
             ->get()
             ->toArray();
     }
+
+    /**
+     * Check if user belongs to group or not
+     * 
+     * @param integer $userId
+     * @param integer $groupId
+     * 
+     * @return boolean
+     */
+    public function doesMemberBelongToGroup(int $userId, int $groupId)
+    {
+        $userInfo = $this->where('group_infos_id', $groupId)
+            ->where('users_id', $userId)
+            ->first();
+
+        if (is_null($userInfo)) {
+            return false;
+        }
+
+        return true;
+    }
 }

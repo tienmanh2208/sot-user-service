@@ -35,6 +35,7 @@ Route::group([
         Route::post('/create-group', 'CreateGroupController@main');
         Route::get('/by-invited-key', 'GetGroupByInvitedKeyController@main');
         Route::post('/join-group', 'JoinGroupByInvitedKeyController@main');
+        Route::get('/index-sections', 'IndexSectionsOfCurrentUser@main');
 
         Route::group([
             'middleware' => 'checkGroupCreator'

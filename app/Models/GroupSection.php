@@ -15,6 +15,12 @@ class GroupSection extends Model
         'description',
     ];
 
+    /**
+     * Create sections for group
+     * 
+     * @param array $sections
+     * @param integer $groupId
+     */
     public function createSectionsForGroup(array $sections, int $groupId)
     {
         $currentTime = Carbon::now();
@@ -32,5 +38,22 @@ class GroupSection extends Model
         }
 
         $this->insert($queryCreateSections);
+    }
+
+    /**
+     * Get list section of a group
+     * 
+     * @param integer $groupId
+     */
+    public function getListSection(int $groupId)
+    {
+        return $this->where('group_infos_id', $groupId)
+            ->get([
+                'id',
+                'group_infos_id',
+                'name',
+                'description',
+            ])
+            ->toArray();
     }
 }
