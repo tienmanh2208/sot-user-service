@@ -26,7 +26,7 @@ class Group extends Model
      */
     public function createGroup(array $params)
     {
-        $this->create([
+        return $this->create([
             'creator' => Auth::id(),
             'title' => $params['title'],
             'default_coin' => (int) $params['default_coin'],

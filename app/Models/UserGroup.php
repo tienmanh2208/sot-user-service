@@ -23,14 +23,29 @@ class UserGroup extends Model
      * Join group vy invited key
      *
      * @param string $invitedKey
-     * @param Group $groupId
+     * @param int $groupId
      */
-    public function joinGroupByInvitedKey(string $invitedKey, $groupId)
+    public function joinGroupByInvitedKey(string $invitedKey, int $groupId)
     {
         $this->firstOrCreate([
             'group_infos_id' => $groupId,
             'users_id' => Auth::id(),
             'role' => UserGroupRole::MEMBER,
+            'permission' => UserGroupPermission::CAN_DO_ANYTHING,
+        ]);
+    }
+
+    /**
+     * Add user to their own group
+     * 
+     * @param integer $groupId
+     */
+    public function createUserGroupForAdmin(int $groupId)
+    {
+        $this->create([
+            'group_infos_id' => $groupId,
+            'users_id' => Auth::id(),
+            'role' => UserGroupRole::ADMIN,
             'permission' => UserGroupPermission::CAN_DO_ANYTHING,
         ]);
     }
