@@ -13,4 +13,5 @@ final class UserGroupRole extends Enum
 {
     const MEMBER = 1;
     const CONTENT_MANAGEMENT = 2;
+    const ADMIN = 3;
 }

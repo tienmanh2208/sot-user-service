@@ -44,6 +44,13 @@ Route::group([
             Route::get('/info', 'GetInfoGroupByAdminController@main');
         });
     });
+
+    Route::group([
+        'prefix' => 'users',
+        'namespace' => 'Users'
+    ], function () {
+        Route::get('/groups', 'IndexGroupController@main');
+    });
 });
 
 Route::group([

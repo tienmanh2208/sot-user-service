@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Enums\UserGroupPermission;
 use App\Enums\UserGroupRole;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\UserGroupPermission;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 
 class UserGroup extends Model
 {
@@ -36,7 +37,7 @@ class UserGroup extends Model
 
     /**
      * Remove member from group
-     * 
+     *
      * @param integer $memberId
      * @param integer $groupId
      */
@@ -45,5 +46,22 @@ class UserGroup extends Model
         $this->where('group_infos_id', $groupId)
             ->where('users_id', $memberId)
             ->delete();
+    }
+
+    public function getAllGroupOfAnUser(int $userId)
+    {
+        return $this->join('group_infos', 'user_groups.group_infos_id', '=', 'group_infos.id')
+            ->where('users_id', $userId)
+            ->select(
+                'group_infos_id',
+                'users_id',
+                'role',
+                'permission',
+                'creator',
+                'title',
+                'privacy'
+            )
+            ->get()
+            ->toArray();
     }
 }
