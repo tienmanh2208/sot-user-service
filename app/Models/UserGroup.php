@@ -36,6 +36,22 @@ class UserGroup extends Model
     }
 
     /**
+     * Add member to group
+     * 
+     * @param integer $groupId
+     * @param integer $userId
+     */
+    public function addMemberToGroup(int $groupId, int $userId)
+    {
+        $this->firstOrCreate([
+            'group_infos_id' => $groupId,
+            'users_id' => $userId,
+            'role' => UserGroupRole::MEMBER,
+            'permission' => UserGroupPermission::CAN_DO_ANYTHING,
+        ]);
+    }
+
+    /**
      * Add user to their own group
      * 
      * @param integer $groupId

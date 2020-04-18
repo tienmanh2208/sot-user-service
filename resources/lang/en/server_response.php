@@ -12,4 +12,10 @@ return [
     'request_forbidden' => 'Request is forbidden',
     'delete_member_successfully' => 'Delete member successfully',
     'can_not_delete_yourself' => 'You can not delete yourself',
+    'add_user_successfully' => 'User is added successfully',
+
+    /**
+     * Users
+     */
+    'user_not_found' => 'User not found',
 ];

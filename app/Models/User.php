@@ -115,4 +115,23 @@ class User extends Authenticatable
             ->get(['first_name', 'last_name', 'id'])
             ->toArray();
     }
+
+    public function checkExistenceOfUserById(int $userId)
+    {
+        $userInfo = $this->getUserById($userId);
+
+        if (is_null($userInfo)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Get user by id
+     */
+    public function getUserById(int $userId)
+    {
+        return $this->where('id', $userId)->first();
+    }
 }
