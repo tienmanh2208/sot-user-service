@@ -134,4 +134,9 @@ class User extends Authenticatable
     {
         return $this->where('id', $userId)->first();
     }
+
+    public function additionalInfo()
+    {
+        return $this->hasOne('App\Models\AdditionalInfo');
+    }
 }

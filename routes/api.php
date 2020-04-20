@@ -53,6 +53,7 @@ Route::group([
         'namespace' => 'Users'
     ], function () {
         Route::get('/groups', 'IndexGroupController@main');
+        Route::get('/basic-info', 'GetBasicInfo@main');
     });
 });
 
