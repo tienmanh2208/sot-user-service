@@ -116,4 +116,20 @@ class UserGroup extends Model
 
         return true;
     }
+
+    /**
+     * Get list newest members of group
+     * 
+     * @param integer $groupId
+     * @param integer $quantity
+     */
+    public function getNewestMemberOfGroup(int $groupId, int $quantity = 5)
+    {
+        return $this->join('users', 'user_groups.users_id', '=', 'users.id')
+            ->where('group_infos_id', $groupId)
+            ->orderBy('user_groups.created_at', 'DESC')
+            ->selectRaw('concat(last_name, " ", first_name) as full_name, users.id as id')
+            ->limit($quantity)
+            ->get();
+    }
 }
