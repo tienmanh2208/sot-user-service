@@ -76,9 +76,10 @@ class CreateGroupController extends Controller
      */
     protected function createGroup(array $params)
     {
+        $listSection = array_merge($params['sections'], ['all']);
         $groupInfo = $this->group->createGroup($params);
         $this->userGroup->createUserGroupForAdmin($groupInfo->id);
-        $this->groupSection->createSectionsForGroup($params['sections'], $groupInfo->id);
+        $this->groupSection->createSectionsForGroup($listSection, $groupInfo->id);
     }
 
     /**
