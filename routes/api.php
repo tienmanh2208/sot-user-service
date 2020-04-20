@@ -35,14 +35,23 @@ Route::group([
         Route::post('/create-group', 'CreateGroupController@main');
         Route::get('/by-invited-key', 'GetGroupByInvitedKeyController@main');
         Route::post('/join-group', 'JoinGroupByInvitedKeyController@main');
+        Route::get('/index-sections', 'IndexSectionsOfCurrentUser@main');
 
         Route::group([
             'middleware' => 'checkGroupCreator'
         ], function () {
+            Route::post('/add-member', 'AddMemberByAdmin@main');
             Route::post('/delete-member', 'DeleteMemberInGroupController@main');
             Route::post('/refresh-key', 'RefreshKeyController@main');
             Route::get('/info', 'GetInfoGroupByAdminController@main');
         });
+    });
+
+    Route::group([
+        'prefix' => 'users',
+        'namespace' => 'Users'
+    ], function () {
+        Route::get('/groups', 'IndexGroupController@main');
     });
 });
 
