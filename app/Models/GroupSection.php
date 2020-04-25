@@ -13,6 +13,7 @@ class GroupSection extends Model
         'group_infos_id',
         'name',
         'description',
+        'question_count'
     ];
 
     /**

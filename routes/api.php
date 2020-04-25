@@ -36,6 +36,7 @@ Route::group([
         Route::get('/by-invited-key', 'GetGroupByInvitedKeyController@main');
         Route::post('/join-group', 'JoinGroupByInvitedKeyController@main');
         Route::get('/index-sections', 'IndexSectionsOfCurrentUser@main');
+        Route::get('/newest-member', 'GetNewestMemberOfGroup@main');
 
         Route::group([
             'middleware' => 'checkGroupCreator'
@@ -52,6 +53,7 @@ Route::group([
         'namespace' => 'Users'
     ], function () {
         Route::get('/groups', 'IndexGroupController@main');
+        Route::get('/basic-info', 'GetBasicInfo@main');
     });
 });
 

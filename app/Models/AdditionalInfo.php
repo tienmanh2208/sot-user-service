@@ -16,6 +16,7 @@ class AdditionalInfo extends Model
         'total_upvotes',
         'total_downvotes',
         'total_comments',
-        'total_answers'
+        'total_answers',
+        'total_questions'
     ];
 }

@@ -8,5 +8,5 @@ class Field extends Model
 {
     protected $table = 'fields';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'question_count'];
 }
