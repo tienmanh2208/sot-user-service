@@ -12,6 +12,7 @@
         "bensampo/laravel-enum": "^1.36",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.5",
         "jenssegers/mongodb": "^3.6",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.4",

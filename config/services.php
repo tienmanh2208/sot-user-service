@@ -30,4 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'question_service' => [
+        'domain' => env('QUESTION_SERVICE_DOMAIN', '127.0.0.1:82')
+    ],
 ];
