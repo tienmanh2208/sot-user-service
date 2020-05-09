@@ -63,4 +63,5 @@ Route::group([
 ], function () {
     Route::get('/top-users', 'GetTopUsersController@main');
     Route::get('/top-fields', 'GetTopFieldController@main');
+    Route::get('/newest-questions', 'GetNewestQuestionController@main');
 });
