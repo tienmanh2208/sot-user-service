@@ -38,4 +38,30 @@ class QuestionService
             'data' => $response->data,
         ];
     }
+
+    /**
+     * Get all questions of users
+     */
+    public function getQuestionOfUser(int $userId, $fieldId)
+    {
+        if (is_null($fieldId)) {
+            $uri = '/api/questions/users/' . $userId;
+        } else {
+            $uri = '/api/questions/users/' . $userId . '?field_id=' . $fieldId;
+        }
+
+        $response = $this->guzzleService->get($uri);
+
+        if ($response->code != 200) {
+            return [
+                'code' => 400,
+                'message' => trans('server_response.server_error'),
+            ];
+        }
+
+        return [
+            'code' => 200,
+            'data' => $response->data,
+        ];
+    }
 }

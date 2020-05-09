@@ -54,6 +54,7 @@ Route::group([
     ], function () {
         Route::get('/groups', 'IndexGroupController@main');
         Route::get('/basic-info', 'GetBasicInfo@main');
+        Route::get('/questions', 'GetQuestionController@main');
     });
 });
 
