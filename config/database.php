@@ -46,11 +46,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_MYSQL_HOST', 'db4free.net'),
+            'port' => env('DB_MYSQL_PORT', '3306'),
+            'database' => env('DB_MYSQL_DATABASE', 'sot_user_service'),
+            'username' => env('DB_MYSQL_USERNAME', 'sot_tienmanh'),
+            'password' => env('DB_MYSQL_PASSWORD', 'sot_tienmanh'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -90,7 +90,6 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-
     ],
 
     /*
